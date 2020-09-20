@@ -13,18 +13,18 @@ def generate(model: Model, count_word: int, base_text=None):
     return new_text
 
 
-a = input('input path to model(*.piclkle) or N if you want main model \n')
-if a == 'N':
+def start_generate():
+    a = input('input path to model(*.piclkle) or N if you want main model \n')
     mod = Model()
-    mod.load()
-else:
-    mod = Model(a)
+    if a == 'N':
+        mod.load()
+    else:
+        mod.load(a)
 
-count = int(input('input count of new word\n'))
+    count = int(input('input count of new word\n'))
 
-base = input('input base text or N\n')
-if len(base.split()) == 0 or base == 'N':
-    base = None
-text = generate(mod, count, base)
-print(text)
-
+    base = input('input base text or N\n')
+    if len(base.split()) == 0 or base == 'N':
+        base = None
+    text = generate(mod, count, base)
+    print(text)

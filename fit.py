@@ -61,18 +61,19 @@ def fit_and_save(model, path_file_fit='dataset.txt', path_load_file='data.pickle
     model.save()
 
 
-mod = Model()
-a = input('input D if you want delete main model or F if you want fit model\n')
-if a == 'D':
-    mod.clear_model()
-elif a == 'F':
-    path_for_fit = input('input path to text for fit')
-    mod.fit(read_file(path_for_fit))
-    s = input('input S if you want save model into main save '
-              'or '
-              'M if you want save to you file(*.pickle)\n')
-    if s == 'S':
-        mod.save()
-    elif s == 'M':
-        path = input('input a path to file\n')
-        mod.save(path)
+def fit_or_delete():
+    mod = Model()
+    a = input('input D if you want delete main model or F if you want fit model\n')
+    if a == 'D':
+        mod.clear_model()
+    elif a == 'F':
+        path_for_fit = input('input path to text for fit\n')
+        mod.fit(read_file(path_for_fit))
+        s = input('input S if you want save model into main save '
+                  'or '
+                  'M if you want save to you file(*.pickle)\n')
+        if s == 'S':
+            mod.save()
+        elif s == 'M':
+            path = input('input a path to file\n')
+            mod.save(path)
